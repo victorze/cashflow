@@ -1,3 +1,5 @@
+include mixins/_flash
+
 doctype html
 html
   head
@@ -9,4 +11,5 @@ html
     script(src='js/script.js' defer)
   body
     main.container
+      +flash()
       block content

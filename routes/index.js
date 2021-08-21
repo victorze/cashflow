@@ -25,6 +25,8 @@ const outflowCategories = [
 ]
 
 router.get('/', (req, res, next) => {
+  console.log(res.locals)
+  console.log('in home')
   res.render('index')
 })
 
@@ -36,11 +38,14 @@ router.get('/transaction', (req, res) => {
 })
 
 router.post('/transaction', (req, res) => {
-  console.log(req.body)
-  console.log(req.query)
+  if (!req.body.category) {
+    req.flash('error', 'Debe seleccionar una categoría')
+    req.flash('error', 'Debe seleccionar una cuenta')
+    return res.redirect('back')
+  }
 
   req.flash('success', 'La transacción fue almacenada')
-  return res.redirect('/')
+  res.redirect('/')
 })
 
 module.exports = router
