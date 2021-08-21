@@ -23,6 +23,46 @@ h1 {
   margin: 0 auto;
 }
 
+/* Flashes */
+.flash-messages {
+  margin: 1rem auto 0;
+  width: 30rem;
+}
+
+.flash {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: .5rem auto;
+  padding: 1rem;
+  border-radius: .2rem;
+  font-size: .9rem;
+}
+
+.flash-success {
+  background-color: #E6FFFA;
+  color: #234E52;
+  border-left: 5px solid #38B2AC;
+}
+
+.flash-error {
+  background-color: #FFF5F5;
+  color: #C53030;
+  border-left: 5px solid #F56565;
+}
+
+.flash-close {
+  border: none;
+  padding: 0 .2rem;
+  background-color: inherit;
+  color: inherit;
+  font-size: 1.1rem;
+}
+
+.flash-close:hover {
+  cursor: pointer;
+}
+
 /* Index */
 .balance {
   margin: 4rem 0;

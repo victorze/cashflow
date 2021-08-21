@@ -1,7 +1,8 @@
 extends layout
+include mixins/_flash
 
 block content
-  //- h1 Money
+  +flash()
   .balance Saldo&nbsp;
     span S/ 450
   .cash-flow

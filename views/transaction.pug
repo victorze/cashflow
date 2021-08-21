@@ -8,11 +8,11 @@ block content
 
   form.transaction(method='POST' action='/transaction' autocomplete='off' class=type)
     select.account(name='account' placeholder='Monto')
-      option(value='none') Seleccione una cuenta
+      option(value='') Seleccione una cuenta
       each account, index in accounts
         option(value=index)= account
     select.category(name='category')
-      option(value='none') Seleccione una categoría
+      option(value='') Seleccione una categoría
       each category, index in categories
         option(value=index)= category
     input.amount(type='text' name='amount' placeholder='Monto')

@@ -1,4 +1,4 @@
-const express = require("express")
+const express = require('express')
 
 const router = express.Router()
 
@@ -24,23 +24,23 @@ const outflowCategories = [
   'Transporte',
 ]
 
-router.get("/", (req, res, next) => {
-  console.log(req.flash('info'))
-  res.render("index", { title: "Express" })
+router.get('/', (req, res, next) => {
+  res.render('index')
 })
 
 router.get('/transaction', (req, res) => {
-  const categories = req.query.type === 'inflow' ? inflowCategories : outflowCategories;
+  const type = req.query.type
+  const categories = type === 'inflow' ? inflowCategories : outflowCategories
 
-  res.render('transaction', { type: req.query.type, accounts, categories });
+  res.render('transaction', { type, accounts, categories })
 })
 
 router.post('/transaction', (req, res) => {
   console.log(req.body)
   console.log(req.query)
 
-  req.flash('info', 'La información fue almacenada.')
+  req.flash('success', 'La transacción fue almacenada')
   return res.redirect('/')
 })
 
-module.exports = router;
+module.exports = router

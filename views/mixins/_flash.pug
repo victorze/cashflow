@@ -1,0 +1,9 @@
+mixin flash()
+  - const categories = Object.keys(locals.flashes)
+  if categories.length
+    .flash-messages
+      each category in categories
+        each message in flashes[category]
+          .flash(class=`flash-${category}`)
+            .flash-text!= message
+            button.flash-close(onClick="this.parentElement.remove()") &times;

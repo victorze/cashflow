@@ -19,10 +19,16 @@ app.use(express.static(path.join(__dirname, 'static')))
 app.use(session({
   secret: 'keyboard cat',
   cookie: { maxAge: 60000 }
-}));
-app.use(flash());
+}))
 
-app.use('/', routes);
+app.use(flash())
+
+app.use((req, res, next) => {
+  res.locals.flashes = req.flash()
+  next()
+})
+
+app.use('/', routes)
 
 app.use((req, res, next) => {
   const err = new Error('404 Not Found.')
