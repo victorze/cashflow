@@ -1,0 +1,136 @@
+:root {
+  --green: #7AC795;
+  --red: #EC5051;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #181818;
+  border: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #CCCCCC;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+/* Index */
+.balance {
+  margin: 4rem 0;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.cash-flow {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-outflow,
+.btn-inflow {
+  display: flex;
+  margin: 0 2rem;
+  height: 10rem;
+  width: 10rem;
+  border: .3rem solid #CCC;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+.btn-outflow {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.btn-inflow {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.btn-outflow:hover,
+.btn-inflow:hover {
+  transform: scale(1.05);
+}
+
+/* Trasaction */
+.transaction-title {
+  text-align: center;
+  margin: 3rem;
+  font-size: 2rem;
+}
+
+.transaction {
+  display: flex;
+  flex-direction: column;
+  max-width: 15rem;
+  margin: 0 auto;
+}
+
+.account,
+.category,
+.amount,
+.note,
+.btn {
+  margin-bottom: 1.5rem;
+  height: 2rem;
+  border: 1px solid #313131;
+  border-radius: 5px;
+  padding: 0 .5rem;
+  background-color: #121212;
+  color: #CCCCCC;
+  font-family: inherit;
+}
+
+.amount {
+  text-align: right;
+}
+
+.btn {
+  color: #181818;
+  font-weight: bold;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.inflow > *:focus {
+  outline: none !important;
+  border-color: var(--green);
+}
+
+.outflow > *:focus {
+  outline: none !important;
+  border-color: var(--red);
+}
+
+.inflow .btn {
+  background-color: var(--green);
+}
+
+.outflow .btn {
+  background-color: var(--red);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-red {
+  color: var(--red);
+}

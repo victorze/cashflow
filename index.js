@@ -3,6 +3,8 @@ const path = require('path')
 
 const express = require('express')
 const logger = require('morgan')
+const session = require('express-session')
+const flash = require('connect-flash')
 const routes = require('./routes')
 
 const app = express()
@@ -13,6 +15,12 @@ app.set('view engine', 'pug')
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'static')))
+
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: { maxAge: 60000 }
+}));
+app.use(flash());
 
 app.use('/', routes);
 

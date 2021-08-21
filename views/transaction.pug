@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  - var textColor = (type == 'inflow' ? 'text-green' : 'text-red')
+  - var title = (type == 'inflow' ? 'Registrar Ingreso' : 'Registrar Egreso')
+
+  h2.transaction-title(class=textColor)= title
+
+  form.transaction(method='POST' action='/transaction' autocomplete='off' class=type)
+    select.account(name='account' placeholder='Monto')
+      option(value='none') Seleccione una cuenta
+      each account, index in accounts
+        option(value=index)= account
+    select.category(name='category')
+      option(value='none') Seleccione una categoría
+      each category, index in categories
+        option(value=index)= category
+    input.amount(type='text' name='amount' placeholder='Monto')
+    input.note(type='text' name='note' placeholder='Nota')
+    input(type='hidden' name='type' value=type)
+    button.btn(type='submit') Registrar

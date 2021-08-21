@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  //- h1 Money
+  .balance Saldo&nbsp;
+    span S/ 450
+  .cash-flow
+      a.btn-outflow(href='/transaction?type=outflow')
+        span -
+      a.btn-inflow(href='/transaction?type=inflow')
+        span +
