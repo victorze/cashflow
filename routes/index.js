@@ -1,51 +1,17 @@
 const express = require('express')
 
+const transactionRepository = require('../repositories/transaction')
+const transactionController  = require('../controllers/transaction')
+const { validateTransaction }  = require('../controllers/transaction')
+
 const router = express.Router()
 
-const accounts = ['Efectivo', 'Tarjeta de pago' ]
-
-const inflowCategories = ['Ahorros', 'Depósitos', 'Salario']
-
-const outflowCategories = [
-  'Automovil',
-  'Casa',
-  'Comida',
-  'Comunicaciones',
-  'Deportes',
-  'Entretenimiento',
-  'Facturas',
-  'Higiene',
-  'Mascotas',
-  'Regalos',
-  'Restaurante',
-  'Ropa',
-  'Salud',
-  'Taxi',
-  'Transporte',
-]
-
 router.get('/', (req, res, next) => {
-  console.log(res.locals)
-  console.log('in home')
-  res.render('index')
+  const transactions = transactionRepository.getAll()
+  res.render('index', { transactions })
 })
 
-router.get('/transaction', (req, res) => {
-  const type = req.query.type
-  const categories = type === 'inflow' ? inflowCategories : outflowCategories
-
-  res.render('transaction', { type, accounts, categories })
-})
-
-router.post('/transaction', (req, res) => {
-  if (!req.body.category) {
-    req.flash('error', 'Debe seleccionar una categoría')
-    req.flash('error', 'Debe seleccionar una cuenta')
-    return res.redirect('back')
-  }
-
-  req.flash('success', 'La transacción fue almacenada')
-  res.redirect('/')
-})
+router.get('/transaction', transactionController.index)
+router.post('/transaction', validateTransaction, transactionController.store)
 
 module.exports = router

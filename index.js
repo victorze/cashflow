@@ -25,6 +25,7 @@ app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.flashes = req.flash()
+  console.log({locals: res.locals})
   next()
 })
 

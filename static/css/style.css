@@ -52,6 +52,7 @@ h1 {
 }
 
 .flash-close {
+  height: 1rem;
   border: none;
   padding: 0 .2rem;
   background-color: inherit;
@@ -63,7 +64,7 @@ h1 {
   cursor: pointer;
 }
 
-/* Index */
+/* Main */
 .balance {
   margin: 4rem 0;
   text-align: center;
