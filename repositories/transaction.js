@@ -1,9 +1,17 @@
 const transactions = [
   {
+    createdAt: 1626959699000,
+    account: '0',
+    category: '6',
+    amount: 100,
+    note: '',
+    type: 'outflow'
+  },
+  {
     createdAt: 1629589384099,
     account: '0',
     category: '5',
-    amount: '12',
+    amount: 12,
     note: '',
     type: 'outflow'
   },
@@ -11,7 +19,7 @@ const transactions = [
     createdAt: 1629589390148,
     account: '1',
     category: '2',
-    amount: '14',
+    amount: 14,
     note: '',
     type: 'inflow'
   },
@@ -19,23 +27,31 @@ const transactions = [
     createdAt: 1629589396131,
     account: '0',
     category: '4',
-    amount: '14',
+    amount: 14,
     note: '',
     type: 'outflow'
   },
   {
     createdAt: 1629589407171,
     account: '0',
-    category: '6',
-    amount: '90',
+    category: '5',
+    amount: 90,
     note: 'Internet',
     type: 'outflow'
   }
 ]
 
 function add(transaction) {
-  transactions.push({ createdAt: Date.now(), ...transaction })
-  console.log('New transaction', transaction)
+  const newTransaction = {
+    createdAt: Date.now(),
+    account: transaction.account,
+    category: transaction.category,
+    amount: +transaction.amount,
+    note: transaction.note,
+    type: transaction.type,
+  }
+  transactions.push(newTransaction)
+  console.log('New transaction', newTransaction)
   console.log('number of transactions', transactions.length)
 }
 

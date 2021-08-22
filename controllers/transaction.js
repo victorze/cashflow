@@ -61,5 +61,6 @@ function validateTransaction(req, res, next) {
 module.exports = {
   index,
   store,
-  validateTransaction
+  validateTransaction,
+  outflowCategories
 }

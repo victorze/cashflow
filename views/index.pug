@@ -1,5 +1,11 @@
 extends layout
 
+block scripts
+  script(src='https://cdn.jsdelivr.net/npm/chart.js' defer)
+  script(src='js/script.js' defer)
+  script.
+    const chartData = !{JSON.stringify(chartData)}
+
 block content
   .balance Saldo&nbsp;
     span S/ 450
@@ -8,3 +14,6 @@ block content
         span -
       a.btn-inflow(href='/transaction?type=inflow')
         span +
+  p.month= month
+  .chart
+    canvas#chart

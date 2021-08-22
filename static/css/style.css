@@ -108,6 +108,19 @@ h1 {
   transform: scale(1.05);
 }
 
+.month {
+  margin: 2rem 0 0;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* Chart */
+.chart {
+  margin: 2rem auto 0;
+  width: 35rem;
+}
+
 /* Trasaction */
 .transaction-title {
   text-align: center;
