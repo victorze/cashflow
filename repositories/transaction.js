@@ -8,6 +8,14 @@ const transactions = [
     type: 'outflow'
   },
   {
+    createdAt: 1626959699000,
+    account: '0',
+    category: '6',
+    amount: 600,
+    note: '',
+    type: 'inflow'
+  },
+  {
     createdAt: 1629589384099,
     account: '0',
     category: '5',
@@ -19,7 +27,7 @@ const transactions = [
     createdAt: 1629589390148,
     account: '1',
     category: '2',
-    amount: 14,
+    amount: 500,
     note: '',
     type: 'inflow'
   },

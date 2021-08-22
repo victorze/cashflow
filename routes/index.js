@@ -4,17 +4,36 @@ const transactionRepository = require('../repositories/transaction')
 const transactionController  = require('../controllers/transaction')
 const { validateTransaction, outflowCategories }  = require('../controllers/transaction')
 
-
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
-  const chartData = getChartData(transactionRepository.getAll())
-  console.log(chartData)
+  const transactions = transactionRepository.getAll()
+  const balance = getBalance(transactions)
+  const chartData = getChartData(transactions)
   const currentMonth = new Date().getMonth()
   const month = getNameMonth(currentMonth)
-  console.log({month})
-  res.render('index', { chartData, month })
+
+  console.log({balance, month, chartData})
+  res.render('index', { balance, month, chartData })
 })
+
+function getBalance(transactions) {
+  const currentMonth = new Date().getMonth()
+  let inflow = 0
+  let outflow = 0
+
+  for (const transaction of transactions) {
+    if (new Date(transaction.createdAt).getMonth() === currentMonth) {
+      if (transaction.type === 'inflow') {
+        inflow += transaction.amount
+      } else if (transaction.type === 'outflow') {
+        outflow += transaction.amount
+      }
+    }
+  }
+
+  return inflow - outflow
+}
 
 function getChartData(transactions) {
   const chartData = new Map()
