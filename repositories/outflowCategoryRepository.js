@@ -20,6 +20,11 @@ function getAll() {
   return outflowCategories
 }
 
+function get(id) {
+  return outflowCategories[id]
+}
+
 module.exports = {
   getAll,
+  get,
 }

@@ -4,6 +4,11 @@ function getAll() {
   return inflowCategories
 }
 
+function get(id) {
+  return inflowCategories[id]
+}
+
 module.exports = {
   getAll,
+  get,
 }

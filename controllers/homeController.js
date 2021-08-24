@@ -1,5 +1,6 @@
 const transactionRepository = require('../repositories/transactionRepository')
 const outflowCategoryRepository = require('../repositories/outflowCategoryRepository')
+const { getNameMonth } = require('../utils')
 
 function index(req, res) {
   const transactions = transactionRepository.getAll()
@@ -43,12 +44,6 @@ function getChartData(transactions) {
   }
 
   return Object.fromEntries(chartData)
-}
-
-function getNameMonth(month) {
-  const names = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
-                      "agosto", "setiembre", "octubre", "noviembre", "diciembre"];
-  return names[month]
 }
 
 module.exports = {

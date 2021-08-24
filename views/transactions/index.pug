@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1 Transacciones del mes de agosto
+  h1.transactions-title Transacciones del mes de #{month}
 
   table.transactions-table
     thead
@@ -11,22 +11,10 @@ block content
         th Monto
 
     tbody
-      tr
-        td 5
-        td
-          span.icon-inflow
-          |  Salario
-        td.text-end 1,500.00
-      tr
-        td 5
-        td
-          span.icon-outflow
-          |  Ropa
-        td.text-end 88.00
-      tr
-        td 5
-        td
-          span.icon-outflow
-          |  Comida
-        td.text-end 55.50
-
+      each transaction in transactions
+        tr
+          td= transaction.day
+          td
+            span(class='icon-' + transaction.type)
+            |  #{transaction.category}
+          td.text-end= transaction.amount

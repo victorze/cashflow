@@ -9,8 +9,8 @@
 }
 
 body {
+  margin: 0;
   background-color: #181818;
-  border: 0;
   font-family: 'Montserrat', sans-serif;
   color: #CCCCCC;
 }
@@ -34,14 +34,15 @@ nav {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 2rem auto;
+  margin: 0 auto;
   max-width: 50rem;
-  font-weight: 300;
+  padding: 1.5rem;
+  border-bottom: 1px solid #333333;
 }
 
 nav a {
   color: inherit;
-  font-size: 1.7rem;
+  font-size: 1.1rem;
   text-decoration: none;
 }
 
@@ -51,9 +52,9 @@ nav a:hover {
 
 /* Main */
 .balance {
-  margin: 4rem 0;
+  margin: 3rem 0 2rem;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .cash-flow {
@@ -183,6 +184,11 @@ nav a:hover {
 }
 
 /* Transaction index */
+.transactions-title {
+  margin: 3rem;
+  font-size: 2rem;
+}
+
 .icon-inflow,
 .icon-outflow {
   position: relative;

@@ -10,7 +10,7 @@ const transactions = [
   {
     createdAt: 1626959699000,
     account: '0',
-    category: '6',
+    category: '1',
     amount: 600,
     note: '',
     type: 'inflow'
