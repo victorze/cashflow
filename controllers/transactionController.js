@@ -4,7 +4,7 @@ const outflowCategoryRepository =  require('../repositories/outflowCategoryRepos
 const accountRepository = require('../repositories/accountRepository')
 
 function index(req, res) {
-
+  res.render('transactions/index')
 }
 
 function create(req, res) {
@@ -15,7 +15,7 @@ function create(req, res) {
       inflowCategoryRepository.getAll() :
       outflowCategoryRepository.getAll()
 
-  res.render('transaction', { type, accounts, categories })
+  res.render('transactions/create', { type, accounts, categories })
 }
 
 function store(req, res) {
