@@ -1,30 +1,15 @@
-const transactionRepository = require('../repositories/transaction')
-
-const accounts = ['Efectivo', 'Tarjeta de pago']
-
-const inflowCategories = ['Ahorros', 'Depósitos', 'Salario']
-
-const outflowCategories = [
-  'Automovil',
-  'Casa',
-  'Comida',
-  'Comunicaciones',
-  'Deportes',
-  'Entretenimiento',
-  'Facturas',
-  'Higiene',
-  'Mascotas',
-  'Regalos',
-  'Restaurante',
-  'Ropa',
-  'Salud',
-  'Taxi',
-  'Transporte',
-]
+const transactionRepository = require('../repositories/transactionRepository')
+const inflowCategoryRepository = require('../repositories/inflowCategoryRepository')
+const outflowCategoryRepository =  require('../repositories/outflowCategoryRepository')
+const accountRepository = require('../repositories/accountRepository')
 
 function index(req, res) {
   const type = req.query.type
-  const categories = type === 'inflow' ? inflowCategories : outflowCategories
+  const accounts = accountRepository.getAll()
+  const categories =
+    type === 'inflow' ?
+      inflowCategoryRepository.getAll() :
+      outflowCategoryRepository.getAll()
 
   res.render('transaction', { type, accounts, categories })
 }
@@ -62,5 +47,4 @@ module.exports = {
   index,
   store,
   validateTransaction,
-  outflowCategories
 }
