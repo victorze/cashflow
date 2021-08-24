@@ -68,8 +68,8 @@ nav a:hover {
 .btn-inflow {
   display: flex;
   margin: 0 2rem;
-  height: 10rem;
-  width: 10rem;
+  height: 9rem;
+  width: 9rem;
   border: .3rem solid #CCC;
   border-radius: 50%;
   justify-content: center;
@@ -112,7 +112,7 @@ nav a:hover {
 /* Chart */
 .chart {
   margin: 2rem auto 0;
-  width: 35rem;
+  max-width: 30rem;
 }
 
 /* Trasaction  form */
