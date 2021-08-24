@@ -235,19 +235,19 @@ nav a:hover {
   margin: .5rem auto;
   padding: 1rem;
   border-radius: .2rem;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 .flash-success {
+  border-left: 5px solid #38B2AC;
   background-color: #E6FFFA;
   color: #234E52;
-  border-left: 5px solid #38B2AC;
 }
 
 .flash-error {
+  border-left: 5px solid #F56565;
   background-color: #FFF5F5;
   color: #C53030;
-  border-left: 5px solid #F56565;
 }
 
 .flash-close {
