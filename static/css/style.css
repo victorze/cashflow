@@ -1,6 +1,7 @@
 :root {
   --green: #7AC795;
   --red: #EC5051;
+  font-size: 14px;
 }
 
 * {
@@ -26,6 +27,26 @@ h1 {
 /* Utilities */
 .text-end {
   text-align: right;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 50rem;
+  font-weight: 300;
+}
+
+nav a {
+  color: inherit;
+  font-size: 1.7rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--green);
 }
 
 /* Main */
@@ -103,7 +124,7 @@ h1 {
 .transaction {
   display: flex;
   flex-direction: column;
-  max-width: 15rem;
+  max-width: 17rem;
   margin: 0 auto;
 }
 
