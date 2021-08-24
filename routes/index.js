@@ -7,7 +7,9 @@ const { validateTransaction, outflowCategories }  = require('../controllers/tran
 const router = express.Router()
 
 router.get('/', homeController.index)
-router.get('/transaction', transactionController.index)
-router.post('/transaction', validateTransaction, transactionController.store)
+
+router.get('/transactions', transactionController.index)
+router.get('/transactions/create', transactionController.create)
+router.post('/transactions', validateTransaction, transactionController.store)
 
 module.exports = router

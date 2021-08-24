@@ -4,6 +4,10 @@ const outflowCategoryRepository =  require('../repositories/outflowCategoryRepos
 const accountRepository = require('../repositories/accountRepository')
 
 function index(req, res) {
+
+}
+
+function create(req, res) {
   const type = req.query.type
   const accounts = accountRepository.getAll()
   const categories =
@@ -45,6 +49,7 @@ function validateTransaction(req, res, next) {
 
 module.exports = {
   index,
+  create,
   store,
   validateTransaction,
 }

@@ -1,7 +1,7 @@
 const transactionRepository = require('../repositories/transactionRepository')
 const outflowCategoryRepository = require('../repositories/outflowCategoryRepository')
 
-function index(req, res, next) {
+function index(req, res) {
   const transactions = transactionRepository.getAll()
   const balance = getBalance(transactions)
   const chartData = getChartData(transactions)
@@ -52,5 +52,5 @@ function getNameMonth(month) {
 }
 
 module.exports = {
-  index
+  index,
 }
