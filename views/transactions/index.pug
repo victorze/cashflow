@@ -1,4 +1,32 @@
 extends ../layout
 
 block content
-  h1 Transactions
+  h1 Transacciones del mes de agosto
+
+  table.transactions-table
+    thead
+      tr
+        th Día
+        th Categoría
+        th Monto
+
+    tbody
+      tr
+        td 5
+        td
+          span.icon-inflow
+          |  Salario
+        td.text-end 1,500.00
+      tr
+        td 5
+        td
+          span.icon-outflow
+          |  Ropa
+        td.text-end 88.00
+      tr
+        td 5
+        td
+          span.icon-outflow
+          |  Comida
+        td.text-end 55.50
+

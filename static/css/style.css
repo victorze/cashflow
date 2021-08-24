@@ -23,6 +23,11 @@ h1 {
   margin: 0 auto;
 }
 
+/* Utilities */
+.text-end {
+  text-align: right;
+}
+
 /* Main */
 .balance {
   margin: 4rem 0;
@@ -154,6 +159,40 @@ h1 {
 
 .text-red {
   color: var(--red);
+}
+
+/* Transaction index */
+.icon-inflow,
+.icon-outflow {
+  position: relative;
+  top: -3px;
+  display: inline-block;
+  margin-right: .5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.2rem;
+  border-radius: 50%;
+}
+
+.icon-inflow {
+  background-color: var(--green);
+}
+
+.icon-outflow {
+  background-color: var(--red);
+}
+
+.transactions-table {
+  margin: 2rem auto;
+  width: 25rem;
+}
+
+.transactions-table th {
+  text-align: left;
+}
+
+.transactions-table th:last-child {
+  text-align: right;
 }
 
 /* Flashes */
