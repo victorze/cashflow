@@ -30,22 +30,21 @@ const colors = [
 categories = Object.keys(chartData)
 amounts = Object.values(chartData)
 backgroundColor = colors.slice(0, categories.length)
-console.log({categories, amounts, backgroundColor})
+console.log({ categories, amounts, backgroundColor })
 
-const chart = new Chart(
-  document.getElementById('chart'),
-  {
-    type: 'doughnut',
-    data: {
-      labels: categories,
-      datasets: [{
+const chart = new Chart(document.getElementById('chart'), {
+  type: 'doughnut',
+  data: {
+    labels: categories,
+    datasets: [
+      {
         label: 'My First Dataset',
         data: amounts,
         backgroundColor: backgroundColor,
         hoverOffset: 4,
         cutout: '60%',
         borderWidth: 0,
-      }]
-    }
+      },
+    ],
   },
-)
+})

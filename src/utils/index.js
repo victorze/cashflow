@@ -1,6 +1,18 @@
 function getNameMonth(month) {
-  const names = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
-                      'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre']
+  const names = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'setiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+  ]
   return names[month]
 }
 

@@ -1,8 +1,8 @@
 const express = require('express')
 
 const homeController = require('../controllers/homeController')
-const transactionController  = require('../controllers/transactionController')
-const { validateTransaction }  = require('../controllers/transactionController')
+const transactionController = require('../controllers/transactionController')
+const { validateTransaction } = require('../controllers/transactionController')
 
 const router = express.Router()
 

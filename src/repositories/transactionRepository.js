@@ -5,7 +5,7 @@ const transactions = [
     category: '6',
     amount: 100,
     note: '',
-    type: 'outflow'
+    type: 'outflow',
   },
   {
     createdAt: 1626959699000,
@@ -13,7 +13,7 @@ const transactions = [
     category: '1',
     amount: 600,
     note: '',
-    type: 'inflow'
+    type: 'inflow',
   },
   {
     createdAt: 1629589390148,
@@ -21,7 +21,7 @@ const transactions = [
     category: '2',
     amount: 500,
     note: '',
-    type: 'inflow'
+    type: 'inflow',
   },
   {
     createdAt: 1629589384099,
@@ -29,7 +29,7 @@ const transactions = [
     category: '3',
     amount: 30,
     note: '',
-    type: 'outflow'
+    type: 'outflow',
   },
   {
     createdAt: 1629589396131,
@@ -37,7 +37,7 @@ const transactions = [
     category: '4',
     amount: 41,
     note: '',
-    type: 'outflow'
+    type: 'outflow',
   },
   {
     createdAt: 1629589407171,
@@ -45,8 +45,8 @@ const transactions = [
     category: '5',
     amount: 70,
     note: 'Internet',
-    type: 'outflow'
-  }
+    type: 'outflow',
+  },
 ]
 
 function add(transaction) {
@@ -69,5 +69,5 @@ function getAll() {
 
 module.exports = {
   add,
-  getAll
+  getAll,
 }

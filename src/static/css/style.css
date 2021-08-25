@@ -1,6 +1,6 @@
 :root {
-  --green: #7AC795;
-  --red: #EC5051;
+  --green: #7ac795;
+  --red: #ec5051;
   font-size: 14px;
 }
 
@@ -12,7 +12,7 @@ body {
   margin: 0;
   background-color: #181818;
   font-family: 'Montserrat', sans-serif;
-  color: #CCCCCC;
+  color: #cccccc;
 }
 
 h1 {
@@ -70,13 +70,13 @@ nav a:hover {
   margin: 0 2rem;
   height: 9rem;
   width: 9rem;
-  border: .3rem solid #CCC;
+  border: 0.3rem solid #ccc;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
   font-size: 5rem;
   text-decoration: none;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-outflow {
@@ -102,7 +102,7 @@ nav a:hover {
   text-transform: capitalize;
   text-decoration: none;
   text-align: center;
-  color: var(--red)
+  color: var(--red);
 }
 
 .month:hover {
@@ -138,9 +138,9 @@ nav a:hover {
   height: 2rem;
   border: 1px solid #313131;
   border-radius: 5px;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   background-color: #121212;
-  color: #CCCCCC;
+  color: #cccccc;
   font-family: inherit;
 }
 
@@ -194,7 +194,7 @@ nav a:hover {
   position: relative;
   top: -3px;
   display: inline-block;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   height: 0.5rem;
   width: 0.5rem;
   margin-right: 0.2rem;
@@ -232,28 +232,28 @@ nav a:hover {
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: .5rem auto;
+  margin: 0.5rem auto;
   padding: 1rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   font-size: 1rem;
 }
 
 .flash-success {
-  border-left: 5px solid #38B2AC;
-  background-color: #E6FFFA;
-  color: #234E52;
+  border-left: 5px solid #38b2ac;
+  background-color: #e6fffa;
+  color: #234e52;
 }
 
 .flash-error {
-  border-left: 5px solid #F56565;
-  background-color: #FFF5F5;
-  color: #C53030;
+  border-left: 5px solid #f56565;
+  background-color: #fff5f5;
+  color: #c53030;
 }
 
 .flash-close {
   height: 1rem;
   border: none;
-  padding: 0 .2rem;
+  padding: 0 0.2rem;
   background-color: inherit;
   color: inherit;
   font-size: 1.1rem;
@@ -271,6 +271,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }

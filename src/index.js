@@ -16,16 +16,18 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'static')))
 
-app.use(session({
-  secret: 'keyboard cat',
-  cookie: { maxAge: 60000 }
-}))
+app.use(
+  session({
+    secret: 'keyboard cat',
+    cookie: { maxAge: 60000 },
+  })
+)
 
 app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.flashes = req.flash()
-  console.log({locals: res.locals})
+  console.log({ locals: res.locals })
   next()
 })
 

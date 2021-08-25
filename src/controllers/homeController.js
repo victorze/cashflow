@@ -17,11 +17,11 @@ function getBalance(transactions) {
   let outflow = 0
 
   for (const transaction of transactions) {
-      if (transaction.type === 'inflow') {
-        inflow += transaction.amount
-      } else if (transaction.type === 'outflow') {
-        outflow += transaction.amount
-      }
+    if (transaction.type === 'inflow') {
+      inflow += transaction.amount
+    } else if (transaction.type === 'outflow') {
+      outflow += transaction.amount
+    }
   }
 
   return inflow - outflow
@@ -32,7 +32,10 @@ function getChartData(transactions) {
   const currentMonth = new Date().getMonth()
 
   for (const transaction of transactions) {
-    if (transaction.type === 'outflow' && new Date(transaction.createdAt).getMonth() === currentMonth) {
+    if (
+      transaction.type === 'outflow' &&
+      new Date(transaction.createdAt).getMonth() === currentMonth
+    ) {
       const outflowCategories = outflowCategoryRepository.getAll()
       const category = outflowCategories[transaction.category]
       if (chartData.has(category)) {
