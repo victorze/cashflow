@@ -10,10 +10,10 @@ block content
   .balance Saldo&nbsp;
     span S/ #{balance}
   .cash-flow
-      a.btn-outflow(href='/transactions/create?type=outflow')
-        span -
-      a.btn-inflow(href='/transactions/create?type=inflow')
-        span +
+    a.btn-outflow(href='/transactions/create?type=outflow')
+      span -
+    a.btn-inflow(href='/transactions/create?type=inflow')
+      span +
   a.month(href='/transactions')= month
   .chart
     canvas#chart
