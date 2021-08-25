@@ -64,7 +64,7 @@ function add(transaction) {
 }
 
 function getAll() {
-  return transactions;
+  return transactions
 }
 
 module.exports = {
