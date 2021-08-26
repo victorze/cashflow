@@ -1,6 +1,5 @@
 const transactionRepository = require('../repositories/transactionRepository')
-const inflowCategoryRepository = require('../repositories/inflowCategoryRepository')
-const outflowCategoryRepository = require('../repositories/outflowCategoryRepository')
+const outflowCategoryRepository = require('../repositories/categoryRepository')
 const accountRepository = require('../repositories/accountRepository')
 const { getNameMonth, amountFormat } = require('../utils')
 

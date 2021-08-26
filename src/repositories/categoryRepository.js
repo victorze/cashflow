@@ -1,15 +1,19 @@
-const { inflowCategories, outflowCategories } = require('./defaultData')
+const { inflowCategories, outflowCategories } = require('./data')
+const Category = require('../models/category')
 
-function getAll() {
-  return inflowCategories.concat(outflowCategories)
+
+async function getAll() {
+  return await Category.find()
 }
 
-function getInflowCategories() {
-  return inflowCategories
+async function getInflows() {
+  const categories = await getAll()
+  return categories.filter((category) => category === 'inflow')
 }
 
-function getOutflowCategories() {
-  return outflowCategories
+async function getOutflows() {
+  const categories = await getAll()
+  return categories.filter((category) => category === 'outflow')
 }
 
 function get(id) {
@@ -18,7 +22,7 @@ function get(id) {
 
 module.exports = {
   getAll,
-  getInflowCategories,
-  getOutflowCategories,
+  getInflows,
+  getOutflows,
   get,
 }

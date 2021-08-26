@@ -1,73 +1,25 @@
-const transactions = [
-  {
-    createdAt: 1626959699000,
-    account: '0',
-    category: '6',
-    amount: 100,
-    note: '',
-    type: 'outflow',
-  },
-  {
-    createdAt: 1626959699000,
-    account: '0',
-    category: '1',
-    amount: 600,
-    note: '',
-    type: 'inflow',
-  },
-  {
-    createdAt: 1629589390148,
-    account: '1',
-    category: '2',
-    amount: 500,
-    note: '',
-    type: 'inflow',
-  },
-  {
-    createdAt: 1629589384099,
-    account: '0',
-    category: '3',
-    amount: 30,
-    note: '',
-    type: 'outflow',
-  },
-  {
-    createdAt: 1629589396131,
-    account: '0',
-    category: '4',
-    amount: 41,
-    note: '',
-    type: 'outflow',
-  },
-  {
-    createdAt: 1629589407171,
-    account: '0',
-    category: '5',
-    amount: 70,
-    note: 'Internet',
-    type: 'outflow',
-  },
-]
+const Transaction = require('../models/transaction')
 
-function add(transaction) {
+const { mockTransactions } = require('./data')
+
+function save(transaction) {
   const newTransaction = {
-    createdAt: Date.now(),
-    account: transaction.account,
-    category: transaction.category,
-    amount: +transaction.amount,
+    date: transaction.date,
+    account: transaction.accountId,
+    category: transaction.categoryId,
+    amount: transaction.amount,
     note: transaction.note,
-    type: transaction.type,
+    user: userId,
   }
-  transactions.push(newTransaction)
-  console.log('New transaction', newTransaction)
-  console.log('number of transactions', transactions.length)
+  mockTransactions.push(newTransaction)
+  console.log({ newTransaction })
 }
 
-function getAll() {
-  return transactions
+async function getAll() {
+  return await Transaction.find()
 }
 
 module.exports = {
-  add,
+  save,
   getAll,
 }

@@ -1,7 +1,8 @@
-const { accounts } = require('./defaultData')
+const { accounts } = require('./data')
+const Account = require('../models/account')
 
-function getAll() {
-  return accounts
+async function getAll() {
+  return await Account.find()
 }
 
 module.exports = {

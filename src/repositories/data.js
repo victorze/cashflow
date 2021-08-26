@@ -105,8 +105,68 @@ const outflowCategories = [
   },
 ]
 
+const mockTransactions = [
+  {
+    date: 1629589390148,
+    account: {
+      code: 101,
+      description: 'Efectivo',
+    },
+    category: {
+      code: 103,
+      description: 'Salario',
+      type: 'inflow',
+    },
+    amount: 500,
+    note: '',
+  },
+  {
+    date: 1629589384099,
+    account: {
+      code: 101,
+      description: 'Efectivo',
+    },
+    category: {
+      code: 203,
+      description: 'Comida',
+      type: 'outflow',
+    },
+    amount: 30.8,
+    note: '',
+  },
+  {
+    date: 1629589396131,
+    account: {
+      code: 101,
+      description: 'Efectivo',
+    },
+    category: {
+      code: 206,
+      description: 'Entretenimiento',
+      type: 'outflow',
+    },
+    amount: 41,
+    note: '',
+  },
+  {
+    date: 1629589407171,
+    account: {
+      code: 101,
+      description: 'Efectivo',
+    },
+    category: {
+      code: 209,
+      description: 'Mascotas',
+      type: 'outflow',
+    },
+    amount: 70.5,
+    note: 'Internet',
+  },
+]
+
 module.exports = {
   accounts,
   inflowCategories,
   outflowCategories,
+  mockTransactions,
 }

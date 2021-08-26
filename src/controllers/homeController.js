@@ -1,12 +1,12 @@
-const transactionRepository = require('../repositories/transactionRepository')
-const outflowCategoryRepository = require('../repositories/outflowCategoryRepository')
-const { getNameMonth } = require('../utils')
+const Transaction = require('../models/transaction')
+const { getMonthName } = require('../utils')
 
-function index(req, res) {
-  const transactions = transactionRepository.getAll()
+async function index(req, res) {
+  const transactions = await Transaction.find()
+  console.log({ transactions })
   const balance = getBalance(transactions)
   const chartData = getChartData(transactions)
-  const month = getNameMonth(new Date().getMonth())
+  const month = getMonthName(Date.now())
 
   console.log({ balance, month, chartData })
   res.render('home', { balance, month, chartData })
@@ -17,9 +17,9 @@ function getBalance(transactions) {
   let outflow = 0
 
   for (const transaction of transactions) {
-    if (transaction.type === 'inflow') {
+    if (transaction.category.type === 'inflow') {
       inflow += transaction.amount
-    } else if (transaction.type === 'outflow') {
+    } else if (transaction.category.type === 'outflow') {
       outflow += transaction.amount
     }
   }
@@ -33,11 +33,10 @@ function getChartData(transactions) {
 
   for (const transaction of transactions) {
     if (
-      transaction.type === 'outflow' &&
-      new Date(transaction.createdAt).getMonth() === currentMonth
+      transaction.category.type === 'outflow' &&
+      new Date(transaction.date).getMonth() === currentMonth
     ) {
-      const outflowCategories = outflowCategoryRepository.getAll()
-      const category = outflowCategories[transaction.category]
+      const category = transaction.category.description
       if (chartData.has(category)) {
         chartData.set(category, chartData.get(category) + transaction.amount)
       } else {

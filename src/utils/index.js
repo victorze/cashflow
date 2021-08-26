@@ -1,19 +1,5 @@
-function getNameMonth(month) {
-  const names = [
-    'enero',
-    'febrero',
-    'marzo',
-    'abril',
-    'mayo',
-    'junio',
-    'julio',
-    'agosto',
-    'setiembre',
-    'octubre',
-    'noviembre',
-    'diciembre',
-  ]
-  return names[month]
+function getMonthName(date) {
+  return new Intl.DateTimeFormat('es-PE', { month: 'long' }).format(date)
 }
 
 function amountFormat(amount, fractionDigits = 2) {
@@ -26,6 +12,6 @@ function amountFormat(amount, fractionDigits = 2) {
 }
 
 module.exports = {
-  getNameMonth,
+  getMonthName,
   amountFormat,
 }
