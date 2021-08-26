@@ -1,4 +1,4 @@
-const accounts = ['Efectivo', 'Tarjeta de pago']
+const { accounts } = require('./defaultData')
 
 function getAll() {
   return accounts

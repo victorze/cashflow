@@ -14,7 +14,7 @@ const categorySchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum : ['inflow','outflow'],
+    enum: ['inflow', 'outflow'],
     required: true,
   },
   user: {
