@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 })
 
-mongoose.connection.on('error', err => {
+mongoose.connection.on('error', (err) => {
   console.error(`→ ${err.message}`)
   process.exit(1)
 })
