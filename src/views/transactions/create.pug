@@ -1,6 +1,7 @@
 extends ../layout
 
 block content
+  - const type = categories[0].type
   - const textColor = type == 'inflow' ? 'text-green' : 'text-red'
   - const title = type == 'inflow' ? 'Registrar Ingreso' : 'Registrar Egreso'
 
@@ -9,12 +10,12 @@ block content
   form.transaction(method='POST' action='/transactions' autocomplete='off' class=type)
     select.account(name='account' required)
       option(value='') --Seleccione una cuenta--
-      each account, index in accounts
-        option(value=index)= account
+      each account in accounts
+        option(value=account._id)= account.description
     select.category(name='category' required)
       option(value='') --Seleccione una categoría--
-      each category, index in categories
-        option(value=index)= category
+      each category in categories
+        option(value=category._id)= category.description
     input.amount(type='number' name='amount' placeholder='Monto' min='1' step='any' required)
     input.note(type='text' name='note' placeholder='Nota')
     input(type='hidden' name='type' value=type)

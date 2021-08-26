@@ -3,11 +3,11 @@ const { getMonthName } = require('../utils')
 
 async function index(req, res) {
   const transactions = await Transaction.find()
-  console.log({ transactions })
   const balance = getBalance(transactions)
   const chartData = getChartData(transactions)
   const month = getMonthName(Date.now())
 
+  console.log({ transactions })
   console.log({ balance, month, chartData })
   res.render('home', { balance, month, chartData })
 }

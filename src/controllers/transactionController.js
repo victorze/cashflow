@@ -1,6 +1,5 @@
-const transactionRepository = require('../repositories/transactionRepository')
-const outflowCategoryRepository = require('../repositories/categoryRepository')
-const accountRepository = require('../repositories/accountRepository')
+const Account = require('../models/account')
+const Category = require('../models/category')
 const { getNameMonth, amountFormat } = require('../utils')
 
 function index(req, res) {
@@ -27,15 +26,14 @@ function getCurrentMonthTransactions() {
   )
 }
 
-function create(req, res) {
-  const type = req.query.type
-  const accounts = accountRepository.getAll()
-  const categories =
-    type === 'inflow'
-      ? inflowCategoryRepository.getAll()
-      : outflowCategoryRepository.getAll()
+async function create(req, res) {
+  const [accounts, categories] = await Promise.all([
+    Account.find(),
+    Category.find({ type: req.query.type }),
+  ])
 
-  res.render('transactions/create', { type, accounts, categories })
+  console.log({ accounts, categories })
+  res.render('transactions/create', { accounts, categories })
 }
 
 function store(req, res) {
