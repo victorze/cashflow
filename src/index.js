@@ -5,7 +5,19 @@ const express = require('express')
 const logger = require('morgan')
 const session = require('express-session')
 const flash = require('connect-flash')
+const mongoose = require('mongoose')
+
 const routes = require('./routes')
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+
+mongoose.connection.on('error', err => {
+  console.error(`→ ${err.message}`)
+  process.exit(1)
+})
 
 const app = express()
 
@@ -18,8 +30,9 @@ app.use(express.static(path.join(__dirname, 'static')))
 
 app.use(
   session({
-    secret: 'keyboard cat',
-    cookie: { maxAge: 60000 },
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
   })
 )
 
@@ -27,7 +40,7 @@ app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.flashes = req.flash()
-  console.log({ locals: res.locals })
+  console.log({ locals: res.locals, session: req.session })
   next()
 })
 
@@ -51,5 +64,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log('Server on port', PORT)
+  console.log(`Starting development server at http://localhost:${PORT}`)
 })
