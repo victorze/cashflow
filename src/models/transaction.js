@@ -27,12 +27,12 @@ const transactionSchema = new mongoose.Schema({
 })
 
 function autopopulate(next) {
-  this.populate('account');
-  this.populate('category');
-  next();
+  this.populate('account')
+  this.populate('category')
+  next()
 }
 
-transactionSchema.pre('find', autopopulate);
-transactionSchema.pre('findOne', autopopulate);
+transactionSchema.pre('find', autopopulate)
+transactionSchema.pre('findOne', autopopulate)
 
 module.exports = mongoose.model('Transaction', transactionSchema)

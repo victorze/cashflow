@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1.transactions-title Transacciones del mes de #{month}
+  h1.transactions-title Transacciones del mes de #{locals.h.getMonthName(new Date())}
 
   table.transactions-table
     thead
@@ -13,8 +13,8 @@ block content
     tbody
       each transaction in transactions
         tr
-          td= transaction.day
+          td= transaction.date.getDate()
           td
-            span(class='icon-' + transaction.type)
-            |  #{transaction.category}
-          td.text-end= transaction.amount
+            span(class='icon-' + transaction.category.type)
+            |  #{transaction.category.description}
+          td.text-end= locals.h.amountFormat(transaction.amount)

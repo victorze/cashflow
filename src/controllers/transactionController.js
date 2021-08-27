@@ -1,29 +1,22 @@
 const Account = require('../models/account')
 const Category = require('../models/category')
-const { getNameMonth, amountFormat } = require('../utils')
+const Transaction = require('../models/transaction')
 
-function index(req, res) {
-  let transactions = getCurrentMonthTransactions()
-  transactions = transactions.map((transaction) => ({
-    day: new Date(transaction.createdAt).getDate(),
-    type: transaction.type,
-    category:
-      transaction.type === 'inflow'
-        ? inflowCategoryRepository.get(transaction.category)
-        : outflowCategoryRepository.get(transaction.category),
-    amount: amountFormat(transaction.amount),
-  }))
-  const month = getNameMonth(new Date().getMonth())
-  res.render('transactions/index', { transactions, month })
-}
+async function index(req, res) {
+  const currentDate = new Date()
+  const [currentYear, currentMonth] = [
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+  ]
+  const currentMonthTransactions = await Transaction.find({
+    date: {
+      $gte: new Date(currentYear, currentMonth, 1),
+      $lte: new Date(currentYear, currentMonth + 1, 1),
+    },
+  })
 
-function getCurrentMonthTransactions() {
-  let transactions = transactionRepository.getAll()
-  const currentMonth = new Date().getMonth()
-
-  return transactions.filter(
-    (transaction) => new Date(transaction.createdAt).getMonth() === currentMonth
-  )
+  console.log({ currentMonthTransactions })
+  res.render('transactions/index', { transactions: currentMonthTransactions })
 }
 
 async function create(req, res) {
@@ -36,8 +29,9 @@ async function create(req, res) {
   res.render('transactions/create', { accounts, categories })
 }
 
-function store(req, res) {
-  transactionRepository.add(req.body)
+async function store(req, res) {
+  await Transaction.create(req.body)
+
   req.flash('success', 'La transacción fue almacenada')
   res.redirect('/')
 }

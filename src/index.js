@@ -8,6 +8,7 @@ const flash = require('connect-flash')
 const mongoose = require('mongoose')
 
 const routes = require('./routes')
+const utils = require('./utils')
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -40,6 +41,7 @@ app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.flashes = req.flash()
+  res.locals.h = utils
   console.log({ locals: res.locals, session: req.session })
   next()
 })

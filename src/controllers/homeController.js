@@ -1,15 +1,28 @@
 const Transaction = require('../models/transaction')
-const { getMonthName } = require('../utils')
 
 async function index(req, res) {
-  const transactions = await Transaction.find()
+  const currentDate = new Date()
+  const [currentYear, currentMonth] = [
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+  ]
+
+  const [transactions, currentMonthTransactions] = await Promise.all([
+    Transaction.find(),
+    Transaction.find({
+      date: {
+        $gte: new Date(currentYear, currentMonth, 1),
+        $lte: new Date(currentYear, currentMonth + 1, 1),
+      },
+    }),
+  ])
+
   const balance = getBalance(transactions)
-  const chartData = getChartData(transactions)
-  const month = getMonthName(Date.now())
+  const chartData = getChartData(currentMonthTransactions)
 
   console.log({ transactions })
-  console.log({ balance, month, chartData })
-  res.render('home', { balance, month, chartData })
+  console.log({ balance, chartData })
+  res.render('home', { balance, chartData })
 }
 
 function getBalance(transactions) {
