@@ -15,7 +15,7 @@ async function index(req, res) {
     },
   })
 
-  console.log({ currentMonthTransactions })
+  // console.log({ currentMonthTransactions })
   res.render('transactions/index', { transactions: currentMonthTransactions })
 }
 
@@ -25,7 +25,7 @@ async function create(req, res) {
     Category.find({ type: req.query.type }),
   ])
 
-  console.log({ accounts, categories })
+  // console.log({ accounts, categories })
   res.render('transactions/create', { accounts, categories })
 }
 

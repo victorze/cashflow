@@ -29,6 +29,10 @@ h1 {
   text-align: right;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Nav */
 nav {
   display: flex;
@@ -270,6 +274,39 @@ nav a:hover {
 }
 
 .flash-close:hover {
+  cursor: pointer;
+}
+
+/* Authentication */
+.login-title {
+  margin: 3rem 0 2rem;
+  text-align: center;
+}
+
+.login {
+  margin: 0 auto;
+  max-width: 18rem;
+}
+
+.login input {
+  margin: .5rem 0 1rem;
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 1.1rem;
+  background: #e6e6e6;
+}
+
+.login input:focus {
+  outline: none !important;
+}
+
+.login input[type='submit'] {
+  background: #1B5040;
+  color: #fff;
   cursor: pointer;
 }
 

@@ -23,7 +23,6 @@ async function index(req, res) {
   )
   const chartData = getChartData(currentMonthTransactions)
 
-  console.log({ transactions })
   res.render('home', { balance, chartData })
 }
 

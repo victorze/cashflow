@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1.login-title Iniciar sesión
+
+  form.login(method='POST' action='/login' autocomplete='off')
+    div
+      input(type='email', name='email' placeholder='Correo electrónico' required value='foo@email.com')
+    div
+      input(type='password', name='password' placeholder='Contraseña' required value='secret')
+    div
+      input(type='submit' value='Iniciar sessión')

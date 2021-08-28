@@ -42,6 +42,7 @@ app.use(flash())
 app.use((req, res, next) => {
   res.locals.flashes = req.flash()
   res.locals.h = utils
+  res.locals.user = req.session.user
   console.log({ locals: res.locals, session: req.session })
   next()
 })
