@@ -222,6 +222,16 @@ nav a:hover {
   text-align: right;
 }
 
+.category-cell > span {
+  color: #999;
+  font-size: .9rem;
+  padding-left: 1rem;
+}
+
+.day-cell {
+  vertical-align: text-top;
+}
+
 /* Flashes */
 .flash-messages {
   margin: 1rem auto 0;

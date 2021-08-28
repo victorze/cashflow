@@ -12,10 +12,6 @@ const accountSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User',
-  },
 })
 
 module.exports = mongoose.model('Account', accountSchema)

@@ -17,10 +17,6 @@ const categorySchema = new mongoose.Schema({
     enum: ['inflow', 'outflow'],
     required: true,
   },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User',
-  },
 })
 
 module.exports = mongoose.model('Category', categorySchema)
