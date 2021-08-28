@@ -17,38 +17,21 @@ async function index(req, res) {
     }),
   ])
 
-  const balance = getBalance(transactions)
+  const balance = transactions.reduce(
+    (a, b) => (b.category.type === 'inflow' ? a + b.amount : a - b.amount),
+    0
+  )
   const chartData = getChartData(currentMonthTransactions)
 
   console.log({ transactions })
-  console.log({ balance, chartData })
   res.render('home', { balance, chartData })
-}
-
-function getBalance(transactions) {
-  let inflow = 0
-  let outflow = 0
-
-  for (const transaction of transactions) {
-    if (transaction.category.type === 'inflow') {
-      inflow += transaction.amount
-    } else if (transaction.category.type === 'outflow') {
-      outflow += transaction.amount
-    }
-  }
-
-  return inflow - outflow
 }
 
 function getChartData(transactions) {
   const chartData = new Map()
-  const currentMonth = new Date().getMonth()
 
   for (const transaction of transactions) {
-    if (
-      transaction.category.type === 'outflow' &&
-      new Date(transaction.date).getMonth() === currentMonth
-    ) {
+    if (transaction.category.type === 'outflow') {
       const category = transaction.category.description
       if (chartData.has(category)) {
         chartData.set(category, chartData.get(category) + transaction.amount)
