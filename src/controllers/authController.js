@@ -1,10 +1,14 @@
 const User = require('../models/user')
 
-function login(req, res) {
+async function login(req, res) {
+  if (req.session.user) {
+    res.redirect('/')
+  }
+
   res.render('auth/login')
 }
 
-function loginStore(req, res) {
+async function loginStore(req, res) {
   authenticate(req.body.email, req.body.password, (err, user) => {
     if (user) {
       req.session.regenerate(() => {

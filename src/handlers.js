@@ -6,6 +6,11 @@ function restrict(req, res, next) {
   }
 }
 
+function catchErrors(fn) {
+  return (req, res, next) => fn(req, res, next).catch(next)
+}
+
 module.exports = {
   restrict,
+  catchErrors,
 }

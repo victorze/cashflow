@@ -1,5 +1,5 @@
 const express = require('express')
-const { restrict } = require('../handlers')
+const { restrict, catchErrors } = require('../handlers')
 
 const homeController = require('../controllers/homeController')
 const authController = require('../controllers/authController')
@@ -8,17 +8,21 @@ const { validateTransaction } = require('../controllers/transactionController')
 
 const router = express.Router()
 
-router.get('/', restrict, homeController.index)
+router.get('/', restrict, catchErrors(homeController.index))
 
-router.get('/login', authController.login)
-router.post('/login', authController.loginStore)
+router.get('/login', catchErrors(authController.login))
+router.post('/login', catchErrors(authController.loginStore))
 
-router.get('/transactions', restrict, transactionController.index)
-router.get('/transactions/create', restrict, transactionController.create)
+router.get('/transactions', restrict, catchErrors(transactionController.index))
+router.get(
+  '/transactions/create',
+  restrict,
+  catchErrors(transactionController.create)
+)
 router.post(
   '/transactions',
   [restrict, validateTransaction],
-  transactionController.store
+  catchErrors(transactionController.store)
 )
 
 module.exports = router
