@@ -24,14 +24,13 @@ async function loginStore(req, res) {
 
 async function authenticate(email, password, fn) {
   const user = await User.findOne({ email })
-  console.log({ user }, typeof user)
 
   if (!user) return fn(new Error('El correo electrónico no está registrado'))
 
   if (user.validPassword(password)) {
     fn(null, user)
   } else {
-    fn(new Error('La contraseña es incorrecta'))
+    fn(new Error('Credenciales incorrectas. Por favor, inténtalo de nuevo'))
   }
 }
 
