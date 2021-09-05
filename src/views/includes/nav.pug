@@ -1,4 +1,27 @@
-nav
+nav.navbar
   a.logo(href='/') Cash Flow
-  a(href='#') Transferencia
-  a(href='#') Configuración
+
+  ul
+    if user
+      li
+        a(href='#') Operaciones <i class='bx bx-chevron-down'></i>
+        ul
+          li
+            a(href='#') Transferencia
+          li
+            a(href='#') Categorías
+          li
+            a(href='#') Cuentas
+    if user
+      li
+        a(href='#') #{user.name} <i class='bx bx-chevron-down'></i>
+        ul
+          li
+            a(href='/config') Configuración
+          li
+            a(href='/logout') Cerrar sessión
+    else
+      li
+        a(href='/login') Iniciar Sesión
+      li
+        a(href='/register') Crear cuenta

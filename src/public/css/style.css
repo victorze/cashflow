@@ -34,24 +34,56 @@ h1 {
 }
 
 /* Nav */
-nav {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.navbar {
   margin: 0 auto;
-  max-width: 50rem;
-  padding: 1.5rem;
-  border-bottom: 1px solid #333333;
+  max-width: 60rem;
+  border-bottom: 1px solid #404040;
 }
 
-nav a {
-  color: inherit;
-  font-size: 1.1rem;
+.logo {
   text-decoration: none;
+  line-height: 4rem;
+  font-size: 1.5rem;
+  color: inherit;
 }
 
-nav a:hover {
-  color: var(--green);
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+.navbar ul li {
+  display: inline-block;
+  position: relative;
+  list-style: none;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 0 1rem;
+  color: #ccc;
+  line-height: 4rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.navbar ul li a:hover {
+  background: #0d0d0d;
+}
+
+.navbar ul ul {
+  position: absolute;
+  display: none;
+  background: #141414;
+}
+
+.navbar ul li:hover > ul {
+  display: block;
+}
+
+.navbar ul ul li {
+  width: 100%;
 }
 
 /* Main */
@@ -308,6 +340,19 @@ nav a:hover {
   background: #1B5040;
   color: #fff;
   cursor: pointer;
+}
+
+.login ~ p {
+  text-align: center;
+}
+
+.login ~ p > a {
+  text-decoration: none;
+  color: gray;
+}
+
+.login ~ p > a:hover {
+  text-decoration: underline;
 }
 
 /* Hide arrows from input number */
