@@ -1,5 +1,53 @@
 const User = require('../models/user')
 
+async function register(req, res) {
+  if (req.session.user) {
+    res.redirect('/')
+  }
+
+  res.render('auth/register')
+}
+
+async function registerStore(req, res) {
+  if (await User.findOne({ email: req.body.email })) {
+    req.flash(
+      'error',
+      `El correo ${req.body.email} ya está en uso. Elige otro`
+    )
+    return res.redirect('back')
+  }
+
+  const user = new User({ name: req.body.name, email: req.body.email })
+  user.setPassword(req.body.password)
+  await user.save()
+
+  req.flash('success', 'Usuario registrado')
+
+  req.session.regenerate(() => {
+    req.session.user = user
+    res.redirect('/')
+  })
+}
+
+function validateRegister(req, res, next) {
+  const errors = []
+
+  if (!req.body.name || !req.body.email || !req.body.password) {
+    errors.push('Los campos nombre, email y contraseña son obligatorios')
+  }
+
+  if (req.body.password && req.body.password.length <= 8) {
+    errors.push('La contraseña debe contener 8 caracteres como mínimo')
+  }
+
+  if (errors.length) {
+    req.flash('error', errors)
+    res.redirect('back')
+  } else {
+    next()
+  }
+}
+
 async function login(req, res) {
   if (req.session.user) {
     res.redirect('/')
@@ -37,4 +85,7 @@ async function authenticate(email, password, fn) {
 module.exports = {
   login,
   loginStore,
+  register,
+  registerStore,
+  validateRegister,
 }
