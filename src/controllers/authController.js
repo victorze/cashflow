@@ -37,6 +37,10 @@ function validateRegister(req, res, next) {
     errors.push('La contraseña debe contener 8 caracteres como mínimo')
   }
 
+  if (req.body.password && req.body.confirmPassword !== req.body.password) {
+    errors.push('Las contraseñas no coinciden')
+  }
+
   if (errors.length) {
     req.flash('error', errors)
     res.redirect('back')
