@@ -31,7 +31,6 @@ async function registerStore(req, res) {
   req.session.regenerate(() => {
     req.session.user = user
     res.redirect('/')
-    req.flash('success', 'Usuario registrado')
   })
 }
 

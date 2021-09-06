@@ -16,7 +16,6 @@ async function index(req, res) {
     user: req.user._id,
   })
 
-  console.log({ currentMonthTransactions })
   res.render('transactions/index', { transactions: currentMonthTransactions })
 }
 

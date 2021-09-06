@@ -18,8 +18,6 @@ async function index(req, res) {
     }),
   ])
 
-  console.log({ transactions, currentMonthTransactions })
-
   const balance = transactions.reduce(
     (a, b) => (b.category.type === 'inflow' ? a + b.amount : a - b.amount),
     0
