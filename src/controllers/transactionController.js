@@ -13,7 +13,7 @@ async function index(req, res) {
       $gte: new Date(currentYear, currentMonth, 1),
       $lte: new Date(currentYear, currentMonth + 1, 1),
     },
-    user: req.user._id
+    user: req.user._id,
   })
 
   console.log({ currentMonthTransactions })
@@ -22,11 +22,15 @@ async function index(req, res) {
 
 async function create(req, res) {
   const [accounts, categories] = await Promise.all([
-    Account.find(),
-    Category.find({ type: req.query.type }),
+    Account.find({ user: req.user._id }),
+    Category.find({ type: req.query.type, user: req.user._id }),
   ])
 
-  res.render('transactions/create', { accounts, categories })
+  res.render('transactions/create', {
+    type: req.query.type,
+    accounts,
+    categories,
+  })
 }
 
 async function store(req, res) {

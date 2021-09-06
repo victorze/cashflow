@@ -14,7 +14,7 @@ async function index(req, res) {
         $gte: new Date(currentYear, currentMonth, 1),
         $lte: new Date(currentYear, currentMonth + 1, 1),
       },
-      user: req.user._id
+      user: req.user._id,
     }),
   ])
 
