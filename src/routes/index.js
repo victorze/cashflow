@@ -11,6 +11,7 @@ router.get('/', restrict, catchErrors(homeController.index))
 
 router.get('/login', catchErrors(authController.login))
 router.post('/login', catchErrors(authController.loginStore))
+router.get('/logout', catchErrors(authController.logout))
 router.get('/register', catchErrors(authController.register))
 router.post(
   '/register',

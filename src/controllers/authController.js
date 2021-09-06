@@ -10,10 +10,7 @@ async function register(req, res) {
 
 async function registerStore(req, res) {
   if (await User.findOne({ email: req.body.email })) {
-    req.flash(
-      'error',
-      `El correo ${req.body.email} ya está en uso. Elige otro`
-    )
+    req.flash('error', `El correo ${req.body.email} ya está en uso. Elige otro`)
     return res.redirect('back')
   }
 
@@ -46,6 +43,12 @@ function validateRegister(req, res, next) {
   } else {
     next()
   }
+}
+
+async function logout(req, res) {
+  req.session.destroy(() => {
+    res.redirect('/login')
+  })
 }
 
 async function login(req, res) {
@@ -85,6 +88,7 @@ async function authenticate(email, password, fn) {
 module.exports = {
   login,
   loginStore,
+  logout,
   register,
   registerStore,
   validateRegister,
