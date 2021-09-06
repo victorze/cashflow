@@ -40,6 +40,7 @@ app.use(
 app.use(flash())
 
 app.use((req, res, next) => {
+  req.user = req.session.user
   res.locals.flashes = req.flash()
   res.locals.h = helpers
   res.locals.user = req.session.user

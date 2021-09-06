@@ -13,9 +13,10 @@ async function index(req, res) {
       $gte: new Date(currentYear, currentMonth, 1),
       $lte: new Date(currentYear, currentMonth + 1, 1),
     },
+    user: req.user._id
   })
 
-  // console.log({ currentMonthTransactions })
+  console.log({ currentMonthTransactions })
   res.render('transactions/index', { transactions: currentMonthTransactions })
 }
 
@@ -25,11 +26,11 @@ async function create(req, res) {
     Category.find({ type: req.query.type }),
   ])
 
-  // console.log({ accounts, categories })
   res.render('transactions/create', { accounts, categories })
 }
 
 async function store(req, res) {
+  req.body.user = req.user._id
   await Transaction.create(req.body)
 
   req.flash('success', 'La transacción fue almacenada')

@@ -8,12 +8,13 @@ async function index(req, res) {
   ]
 
   const [transactions, currentMonthTransactions] = await Promise.all([
-    Transaction.find(),
+    Transaction.find({ user: req.user._id }),
     Transaction.find({
       date: {
         $gte: new Date(currentYear, currentMonth, 1),
         $lte: new Date(currentYear, currentMonth + 1, 1),
       },
+      user: req.user._id
     }),
   ])
 
