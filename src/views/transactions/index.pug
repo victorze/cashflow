@@ -13,7 +13,7 @@ block content
     tbody
       each transaction in transactions
         tr
-          td.day-cell= transaction.date.getDate()
+          td.day-cell= transaction.createdAt.getDate()
           td.category-cell
             div
               span(class='icon-' + transaction.category.type)

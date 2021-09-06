@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const transactionSchema = new mongoose.Schema({
-  date: {
-    type: Date,
-    default: Date.now,
-  },
   account: {
     type: mongoose.Schema.ObjectId,
     ref: 'Account',
@@ -24,6 +20,9 @@ const transactionSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'User',
   },
+}, {
+  timestamps: true,
+  versionKey: false
 })
 
 function autopopulate(next) {

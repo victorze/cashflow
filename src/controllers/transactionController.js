@@ -9,7 +9,7 @@ async function index(req, res) {
     currentDate.getMonth(),
   ]
   const currentMonthTransactions = await Transaction.find({
-    date: {
+    createdAt: {
       $gte: new Date(currentYear, currentMonth, 1),
       $lte: new Date(currentYear, currentMonth + 1, 1),
     },
