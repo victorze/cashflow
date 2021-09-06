@@ -1,4 +1,7 @@
 const User = require('../models/user')
+const Category = require('../models/category')
+const Account = require('../models/account')
+const { accounts, categories } = require('./initialData')
 
 async function register(req, res) {
   if (req.session.user) {
@@ -10,7 +13,7 @@ async function register(req, res) {
 
 async function registerStore(req, res) {
   if (await User.findOne({ email: req.body.email })) {
-    req.flash('error', `El correo ${req.body.email} ya está en uso. Elige otro`)
+    req.flash('error', `El correo ${req.body.email} ya está en uso`)
     return res.redirect('back')
   }
 
@@ -18,35 +21,18 @@ async function registerStore(req, res) {
   user.setPassword(req.body.password)
   await user.save()
 
-  req.flash('success', 'Usuario registrado')
+  await Promise.all([
+    Account.create(accounts.map((account) => ({ ...account, user: user._id }))),
+    Category.create(
+      categories.map((category) => ({ ...category, user: user._id }))
+    ),
+  ])
 
   req.session.regenerate(() => {
     req.session.user = user
     res.redirect('/')
+    req.flash('success', 'Usuario registrado')
   })
-}
-
-function validateRegister(req, res, next) {
-  const errors = []
-
-  if (!req.body.name || !req.body.email || !req.body.password) {
-    errors.push('Los campos nombre, email y contraseña son obligatorios')
-  }
-
-  if (req.body.password && req.body.password.length <= 8) {
-    errors.push('La contraseña debe contener 8 caracteres como mínimo')
-  }
-
-  if (req.body.password && req.body.confirmPassword !== req.body.password) {
-    errors.push('Las contraseñas no coinciden')
-  }
-
-  if (errors.length) {
-    req.flash('error', errors)
-    res.redirect('back')
-  } else {
-    next()
-  }
 }
 
 async function logout(req, res) {
@@ -86,6 +72,29 @@ async function authenticate(email, password, fn) {
     fn(null, user)
   } else {
     fn(new Error('Credenciales incorrectas. Por favor, inténtalo de nuevo'))
+  }
+}
+
+function validateRegister(req, res, next) {
+  const errors = []
+
+  if (!req.body.name || !req.body.email || !req.body.password) {
+    errors.push('Los campos nombre, email y contraseña son obligatorios')
+  }
+
+  if (req.body.password && req.body.password.length <= 8) {
+    errors.push('La contraseña debe contener 8 caracteres como mínimo')
+  }
+
+  if (req.body.password && req.body.confirmPassword !== req.body.password) {
+    errors.push('Las contraseñas no coinciden')
+  }
+
+  if (errors.length) {
+    req.flash('error', errors)
+    res.redirect('back')
+  } else {
+    next()
   }
 }
 

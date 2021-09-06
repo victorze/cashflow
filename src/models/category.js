@@ -2,13 +2,6 @@ const mongoose = require('mongoose')
 
 const categorySchema = new mongoose.Schema(
   {
-    code: {
-      type: Number,
-      min: 100,
-      max: 299,
-      unique: true,
-      required: true,
-    },
     description: {
       type: String,
       required: true,

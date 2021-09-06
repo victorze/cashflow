@@ -21,4 +21,4 @@ block content
               span=  transaction.category.description
             if transaction.note
               span= transaction.note
-          td.text-end= locals.h.amountFormat(transaction.amount)
+          td.amount-cell= locals.h.amountFormat(transaction.amount)

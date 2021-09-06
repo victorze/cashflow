@@ -264,6 +264,11 @@ h1 {
   padding-left: 1rem;
 }
 
+.amount-cell {
+  text-align: right;
+  vertical-align: top;
+}
+
 .day-cell {
   vertical-align: text-top;
 }
