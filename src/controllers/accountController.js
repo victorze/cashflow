@@ -6,6 +6,13 @@ async function index(req, res) {
   res.render('accounts/index', { accounts })
 }
 
+async function store(req, res) {
+  req.body.user = req.user._id
+  await Account.create(req.body)
+  req.flash('success', 'La cuenta fue creada correctamente')
+  res.redirect('/accounts')
+}
+
 async function update(req, res) {
   await Account.findByIdAndUpdate(req.params.id, req.body)
   req.flash('success', 'La cuenta fue actualizada correctamente')
@@ -20,6 +27,7 @@ async function destroy(req, res) {
 
 module.exports = {
   index,
+  store,
   update,
   destroy,
 }

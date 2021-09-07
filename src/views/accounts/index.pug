@@ -13,3 +13,7 @@ block content
         onclick=`if (confirm('Se eliminarán todas las transacciones vinculadas a esta cuenta. ¿Está seguro que desea continuar?')) getElementById('${account._id}').click()`
       ) Eliminar
       a(href=`/accounts/${account._id}/destroy` id=account._id)
+
+  form.update-form.new-form(method='POST' action='/accounts'  autocomplete='off')
+    input(type='text' name='description' placeholder='Nueva cuenta' required)
+    input(type='submit' value='Guardar' class='btn-save')

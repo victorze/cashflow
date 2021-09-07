@@ -370,6 +370,14 @@ h2 {
   cursor: pointer;
 }
 
+.update-form.new-form {
+  justify-content: flex-start;
+}
+
+.update-form.new-form .btn-save {
+  margin-left: .3rem;
+}
+
 /* Flashes */
 .flash-messages {
   margin: 1rem auto 0;

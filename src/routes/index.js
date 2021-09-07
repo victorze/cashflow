@@ -33,6 +33,7 @@ router.post(
 )
 
 router.get('/accounts', restrict, catchErrors(accountController.index))
+router.post('/accounts', restrict, catchErrors(accountController.store))
 router.post('/accounts/:id/update', restrict, catchErrors(accountController.update))
 router.get('/accounts/:id/destroy', restrict, catchErrors(accountController.destroy))
 
