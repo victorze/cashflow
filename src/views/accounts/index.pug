@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h2 Cuentas
+
+  each account in accounts
+    form.update-form(method='POST' action=`/accounts/${account._id}/update`  autocomplete='off')
+      input(type='text' name='description' value=account.description required)
+      input(type='submit' value='Guardar' class='btn-save')
+      a(
+        href="#"
+        class='btn-delete'
+        onclick=`if (confirm('Se eliminarán todas las transacciones vinculadas a esta cuenta. ¿Está seguro que desea continuar?')) getElementById('${account._id}').click()`
+      ) Eliminar
+      a(href=`/accounts/${account._id}/destroy` id=account._id)

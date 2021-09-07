@@ -19,6 +19,12 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  margin: 3rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
 .container {
   max-width: 75rem;
   margin: 0 auto;
@@ -84,6 +90,52 @@ h1 {
 
 .navbar ul ul li {
   width: 100%;
+}
+
+/* Authentication */
+.login-title {
+  margin: 3rem 0 2rem;
+  text-align: center;
+}
+
+.login {
+  margin: 0 auto;
+  max-width: 18rem;
+}
+
+.login input {
+  margin: .5rem 0 1rem;
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 1.1rem;
+  background: #e6e6e6;
+}
+
+.login input:focus {
+  outline: none !important;
+}
+
+.login input[type='submit'] {
+  background: #1B5040;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login ~ p {
+  text-align: center;
+}
+
+.login ~ p > a {
+  text-decoration: none;
+  color: gray;
+}
+
+.login ~ p > a:hover {
+  text-decoration: underline;
 }
 
 /* Main */
@@ -220,11 +272,6 @@ h1 {
 }
 
 /* Transaction index */
-.transactions-title {
-  margin: 3rem;
-  font-size: 2rem;
-}
-
 .icon-inflow,
 .icon-outflow {
   position: relative;
@@ -273,6 +320,56 @@ h1 {
   vertical-align: text-top;
 }
 
+/* Accounts */
+.update-form {
+  display: flex;
+  justify-content: space-between;
+  width: 30rem;
+  margin: 1.5rem auto;
+}
+
+.update-form input {
+  width: 17rem;
+  height: 2rem;
+  border: 1px solid #808080;
+  border-radius: 0.3rem;
+  padding-left: 0.5rem;
+  font-family: inherit;
+  background: #121212;
+  color: #ccc;
+}
+
+.update-form .btn-delete {
+  width: 6rem;
+  height: 2rem;
+  border: 1px solid #808080;
+  border-radius: 0.3rem;
+  background: #333333;
+  color: #cccccc;
+  line-height: 2rem;
+  text-decoration: none;
+  text-align: center;
+  font-size: 13.33px;
+}
+
+.update-form .btn-save {
+  width: 6rem;
+  border: 1px solid #808080;
+  background: #333333;
+  color: #cccccc;
+}
+
+.update-form input:focus {
+  outline: none !important;
+}
+
+.update-form .btn-save:hover,
+.update-form .btn-delete:hover {
+  background: #4d4d4d;
+  border: 1px solid #b3b3b3;
+  cursor: pointer;
+}
+
 /* Flashes */
 .flash-messages {
   margin: 1rem auto 0;
@@ -312,52 +409,6 @@ h1 {
 
 .flash-close:hover {
   cursor: pointer;
-}
-
-/* Authentication */
-.login-title {
-  margin: 3rem 0 2rem;
-  text-align: center;
-}
-
-.login {
-  margin: 0 auto;
-  max-width: 18rem;
-}
-
-.login input {
-  margin: .5rem 0 1rem;
-  width: 100%;
-  height: 2.5rem;
-  border: none;
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  font-family: inherit;
-  font-size: 1.1rem;
-  background: #e6e6e6;
-}
-
-.login input:focus {
-  outline: none !important;
-}
-
-.login input[type='submit'] {
-  background: #1B5040;
-  color: #fff;
-  cursor: pointer;
-}
-
-.login ~ p {
-  text-align: center;
-}
-
-.login ~ p > a {
-  text-decoration: none;
-  color: gray;
-}
-
-.login ~ p > a:hover {
-  text-decoration: underline;
 }
 
 /* Hide arrows from input number */

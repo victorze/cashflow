@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const Transaction = require('../models/transaction')
+
 const accountSchema = new mongoose.Schema(
   {
     description: {
@@ -16,5 +18,10 @@ const accountSchema = new mongoose.Schema(
     versionKey: false,
   }
 )
+
+accountSchema.pre('findOneAndDelete', async function (next) {
+  await Transaction.deleteMany({ account: this.getQuery()._id })
+  next()
+})
 
 module.exports = mongoose.model('Account', accountSchema)

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1.transactions-title Transacciones del mes de #{locals.h.getMonthName(new Date())}
+  h2 Transacciones de #{locals.h.getMonthName(new Date())}
 
   table.transactions-table
     thead

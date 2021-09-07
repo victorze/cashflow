@@ -4,7 +4,7 @@ block content
   - const textColor = type == 'inflow' ? 'text-green' : 'text-red'
   - const title = type == 'inflow' ? 'Registrar Ingreso' : 'Registrar Egreso'
 
-  h2.transaction-title(class=textColor)= title
+  h2(class=textColor)= title
 
   form.transaction(method='POST' action='/transactions' autocomplete='off' class=type)
     select.account(name='account' required)
