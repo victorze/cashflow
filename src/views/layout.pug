@@ -10,9 +10,19 @@ html
     link(href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet')
     link(rel='stylesheet', href='/css/style.css')
 
-    block scripts
   body
     include includes/nav.pug
     main.container
       +flash()
       block content
+
+    block scripts
+      script.
+        const form = document.querySelector('form');
+        if (form) {
+          form.addEventListener('submit', function() {
+            console.log('in submit')
+            this.querySelector('input[type="submit"]')
+              .setAttribute('disabled', 'disabled');
+          }, false);
+        }
