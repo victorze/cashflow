@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const Transaction = require('../models/transaction')
 
 const accountSchema = new mongoose.Schema(

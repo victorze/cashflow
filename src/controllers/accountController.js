@@ -1,5 +1,4 @@
 const Account = require('../models/account')
-const Transaction = require('../models/transaction')
 
 async function index(req, res) {
   const accounts = await Account.find({ user: req.user._id })

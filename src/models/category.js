@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Transaction = require('../models/transaction')
 
 const categorySchema = new mongoose.Schema(
   {
@@ -21,5 +22,10 @@ const categorySchema = new mongoose.Schema(
     versionKey: false,
   }
 )
+
+categorySchema.pre('findOneAndDelete', async function (next) {
+  await Transaction.deleteMany({ category: this.getQuery()._id })
+  next()
+})
 
 module.exports = mongoose.model('Category', categorySchema)
