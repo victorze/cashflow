@@ -30,7 +30,6 @@ const colors = [
 categories = Object.keys(chartData)
 amounts = Object.values(chartData)
 backgroundColor = colors.slice(0, categories.length)
-console.log({ categories, amounts, backgroundColor })
 
 const chart = new Chart(document.getElementById('chart'), {
   type: 'doughnut',
