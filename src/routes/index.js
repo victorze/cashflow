@@ -35,12 +35,28 @@ router.post(
 
 router.get('/accounts', restrict, catchErrors(accountController.index))
 router.post('/accounts', restrict, catchErrors(accountController.store))
-router.post('/accounts/:id/update', restrict, catchErrors(accountController.update))
-router.get('/accounts/:id/destroy', restrict, catchErrors(accountController.destroy))
+router.post(
+  '/accounts/:id/update',
+  restrict,
+  catchErrors(accountController.update)
+)
+router.get(
+  '/accounts/:id/destroy',
+  restrict,
+  catchErrors(accountController.destroy)
+)
 
 router.get('/categories', restrict, catchErrors(categoryController.index))
 router.post('/categories', restrict, catchErrors(categoryController.store))
-router.post('/categories/:id/update', restrict, catchErrors(categoryController.update))
-router.get('/categories/:id/destroy', restrict, catchErrors(categoryController.destroy))
+router.post(
+  '/categories/:id/update',
+  restrict,
+  catchErrors(categoryController.update)
+)
+router.get(
+  '/categories/:id/destroy',
+  restrict,
+  catchErrors(categoryController.destroy)
+)
 
 module.exports = router

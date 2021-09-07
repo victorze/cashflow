@@ -3,8 +3,8 @@ const Category = require('../models/category')
 async function index(req, res) {
   const categories = await Category.find({ user: req.user._id })
 
-  inflowCategories = categories.filter((category) => category.type === 'inflow')
-  outflowCategories = categories.filter(
+  const inflowCategories = categories.filter((category) => category.type === 'inflow')
+  const outflowCategories = categories.filter(
     (category) => category.type === 'outflow'
   )
 
