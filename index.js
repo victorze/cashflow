@@ -5,16 +5,15 @@ const logger = require('morgan')
 const session = require('express-session')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')
 const { notFound, handleErrors, getMonthName, amountFormat } = require('./handlers')
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-mongoose.connection.on('error', (err) => {
-  console.error(`→ ${err.message}`)
-  process.exit(1)
-})
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected successfully to mongodb server'))
+  .catch((err) => {
+    console.error(`mongoose error → ${err.message}`)
+    process.exit(1)
+  })
 
 const app = express()
 app.set('views', path.join(__dirname, 'views'))
@@ -22,13 +21,12 @@ app.set('view engine', 'pug')
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-)
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
+}))
 app.use(flash())
 app.use((req, res, next) => {
   req.user = req.session.user
@@ -45,5 +43,5 @@ app.use(handleErrors)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log(`Starting development server at http://localhost:${PORT}`)
+  console.log(`Starting server on port ${PORT}`)
 })
