@@ -4,10 +4,8 @@
   "description": "Personal finance application",
   "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "lint": "eslint src --ignore-pattern src/public",
-    "format": "prettier --write 'src/**/*.js'"
+    "start": "NODE_ENV=production node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "Victor",
@@ -22,8 +20,6 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.3.2"
+    "nodemon": "^2.0.12"
   }
 }

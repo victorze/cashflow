@@ -1,6 +1,7 @@
 const Account = require('../models/account')
 const Category = require('../models/category')
 const Transaction = require('../models/transaction')
+const { catchErrors } = require('../handlers')
 
 async function index(req, res) {
   const currentDate = new Date()
@@ -40,32 +41,8 @@ async function store(req, res) {
   res.redirect('/')
 }
 
-function validateTransaction(req, res, next) {
-  const errors = []
-
-  if (!req.body.account) {
-    errors.push('Debe seleccionar una cuenta')
-  }
-
-  if (!req.body.category) {
-    errors.push('Debe seleccionar una categoría')
-  }
-
-  if (isNaN(req.body.amount) || !req.body.amount) {
-    errors.push('Ingrese un monto válido')
-  }
-
-  if (errors.length) {
-    req.flash('error', errors)
-    res.redirect('back')
-  } else {
-    next()
-  }
-}
-
 module.exports = {
-  index,
-  create,
-  store,
-  validateTransaction,
+  index: catchErrors(index),
+  create: catchErrors(create),
+  store: catchErrors(store),
 }

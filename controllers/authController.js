@@ -2,6 +2,7 @@ const User = require('../models/user')
 const Category = require('../models/category')
 const Account = require('../models/account')
 const { accounts, categories } = require('./initialData')
+const { catchErrors } = require('../handlers')
 
 async function register(req, res) {
   if (req.session.user) {
@@ -74,34 +75,10 @@ async function authenticate(email, password, fn) {
   }
 }
 
-function validateRegister(req, res, next) {
-  const errors = []
-
-  if (!req.body.name || !req.body.email || !req.body.password) {
-    errors.push('Los campos nombre, email y contraseña son obligatorios')
-  }
-
-  if (req.body.password && req.body.password.length <= 8) {
-    errors.push('La contraseña debe contener 8 caracteres como mínimo')
-  }
-
-  if (req.body.password && req.body.confirmPassword !== req.body.password) {
-    errors.push('Las contraseñas no coinciden')
-  }
-
-  if (errors.length) {
-    req.flash('error', errors)
-    res.redirect('back')
-  } else {
-    next()
-  }
-}
-
 module.exports = {
-  login,
-  loginStore,
-  logout,
-  register,
-  registerStore,
-  validateRegister,
+  login: catchErrors(login),
+  loginStore: catchErrors(loginStore),
+  logout: catchErrors(logout),
+  register: catchErrors(register),
+  registerStore: catchErrors(registerStore),
 }

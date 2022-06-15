@@ -1,4 +1,5 @@
 const Account = require('../models/account')
+const { catchErrors } = require('../handlers')
 
 async function index(req, res) {
   const accounts = await Account.find({ user: req.user._id })
@@ -25,8 +26,8 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-  index,
-  store,
-  update,
-  destroy,
+  index: catchErrors(index),
+  store: catchErrors(store),
+  update: catchErrors(update),
+  destroy: catchErrors(destroy),
 }

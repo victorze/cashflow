@@ -8,7 +8,7 @@ block scripts
 
 block content
   .balance Saldo&nbsp;
-    span #{balance}
+    span #{locals.h.amountFormat(balance)}
   .cash-flow
     a.btn-outflow(href='/transactions/create?type=outflow')
       span -

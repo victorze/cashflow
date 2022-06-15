@@ -1,4 +1,5 @@
 const Transaction = require('../models/transaction')
+const { catchErrors } = require('../handlers')
 
 async function index(req, res) {
   const currentDate = new Date()
@@ -45,5 +46,5 @@ function getChartData(transactions) {
 }
 
 module.exports = {
-  index,
+  index: catchErrors(index),
 }

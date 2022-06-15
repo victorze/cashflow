@@ -18,11 +18,10 @@ html
 
     block scripts
       script.
-        const form = document.querySelector('form');
+        const form = document.querySelector('form')
         if (form) {
           form.addEventListener('submit', function() {
-            console.log('in submit')
             this.querySelector('input[type="submit"]')
-              .setAttribute('disabled', 'disabled');
-          }, false);
+              .setAttribute('disabled', 'disabled')
+          }, false)
         }

@@ -1,4 +1,5 @@
 const Category = require('../models/category')
+const { catchErrors } = require('../handlers')
 
 async function index(req, res) {
   const categories = await Category.find({ user: req.user._id })
@@ -31,8 +32,8 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-  index,
-  store,
-  update,
-  destroy,
+  index: catchErrors(index),
+  store: catchErrors(store),
+  update: catchErrors(update),
+  destroy: catchErrors(destroy),
 }
