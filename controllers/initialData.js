@@ -82,7 +82,4 @@ const categories = [
   },
 ]
 
-module.exports = {
-  accounts,
-  categories,
-}
+module.exports = { accounts, categories }

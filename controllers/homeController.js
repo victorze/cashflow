@@ -1,7 +1,6 @@
 const Transaction = require('../models/transaction')
-const { catchErrors } = require('../handlers')
 
-async function index(req, res) {
+const index = async (req, res) => {
   const currentDate = new Date()
   const [currentYear, currentMonth] = [
     currentDate.getFullYear(),
@@ -28,7 +27,7 @@ async function index(req, res) {
   res.render('home', { balance, chartData })
 }
 
-function getChartData(transactions) {
+const getChartData = (transactions) => {
   const chartData = new Map()
 
   for (const transaction of transactions) {
@@ -45,6 +44,4 @@ function getChartData(transactions) {
   return Object.fromEntries(chartData)
 }
 
-module.exports = {
-  index: catchErrors(index),
-}
+module.exports = { index }

@@ -1,6 +1,6 @@
 const route = require('express').Router()
-const { authController } = require('../controllers')
-const { validateRegister } = require('../handlers')
+const authController = require('../controllers/authController')
+const { validateRegister } = require('../utils/validator')
 
 route.get('/login', authController.login)
 route.post('/login', authController.loginStore)

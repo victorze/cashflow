@@ -1,4 +1,4 @@
-function validateTransaction(req, res, next) {
+const validateTransaction = (req, res, next) => {
   const errors = []
 
   if (!req.body.account) {
@@ -21,7 +21,7 @@ function validateTransaction(req, res, next) {
   }
 }
 
-function validateRegister(req, res, next) {
+const validateRegister = (req, res, next) => {
   const errors = []
 
   if (!req.body.name || !req.body.email || !req.body.password) {
@@ -44,7 +44,4 @@ function validateRegister(req, res, next) {
   }
 }
 
-module.exports = {
-  validateTransaction,
-  validateRegister,
-}
+module.exports = { validateTransaction, validateRegister }

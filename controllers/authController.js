@@ -2,21 +2,17 @@ const User = require('../models/user')
 const Category = require('../models/category')
 const Account = require('../models/account')
 const { accounts, categories } = require('./initialData')
-const { catchErrors } = require('../handlers')
 
-async function register(req, res) {
-  if (req.session.user) {
-    res.redirect('/')
-  }
-
+const register = (req, res) => {
+  if (req.session.user) return res.redirect('/')
   res.render('auth/register')
 }
 
-async function registerStore(req, res) {
-  if (await User.findOne({ email: req.body.email })) {
-    req.flash('error', `El correo ${req.body.email} ya está en uso`)
-    return res.redirect('back')
-  }
+const registerStore = async (req, res) => {
+  // if (await User.findOne({ email: req.body.email })) {
+  //   req.flash('error', `El correo ${req.body.email} ya está en uso`)
+  //   return res.redirect('back')
+  // }
 
   const user = new User({ name: req.body.name, email: req.body.email })
   user.setPassword(req.body.password)
@@ -35,21 +31,18 @@ async function registerStore(req, res) {
   })
 }
 
-async function logout(req, res) {
+const logout = (req, res) => {
   req.session.destroy(() => {
     res.redirect('/login')
   })
 }
 
-async function login(req, res) {
-  if (req.session.user) {
-    res.redirect('/')
-  }
-
+const login = (req, res) => {
+  if (req.session.user) return res.redirect('/')
   res.render('auth/login')
 }
 
-async function loginStore(req, res) {
+const loginStore = (req, res) => {
   authenticate(req.body.email, req.body.password, (err, user) => {
     if (user) {
       req.session.regenerate(() => {
@@ -63,7 +56,7 @@ async function loginStore(req, res) {
   })
 }
 
-async function authenticate(email, password, fn) {
+const authenticate = async (email, password, fn) => {
   const user = await User.findOne({ email })
 
   if (!user) return fn(new Error('El correo electrónico no está registrado'))
@@ -75,10 +68,4 @@ async function authenticate(email, password, fn) {
   }
 }
 
-module.exports = {
-  login: catchErrors(login),
-  loginStore: catchErrors(loginStore),
-  logout: catchErrors(logout),
-  register: catchErrors(register),
-  registerStore: catchErrors(registerStore),
-}
+module.exports = { login, loginStore, logout, register, registerStore }
