@@ -9,10 +9,10 @@ const register = (req, res) => {
 }
 
 const registerStore = async (req, res) => {
-  // if (await User.findOne({ email: req.body.email })) {
-  //   req.flash('error', `El correo ${req.body.email} ya está en uso`)
-  //   return res.redirect('back')
-  // }
+  if (await User.findOne({ email: req.body.email })) {
+    req.flash('error', `El correo ${req.body.email} ya está en uso`)
+    return res.redirect('back')
+  }
 
   const user = new User({ name: req.body.name, email: req.body.email })
   user.setPassword(req.body.password)

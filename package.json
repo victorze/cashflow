@@ -9,7 +9,6 @@
   },
   "keywords": [],
   "author": "Victor",
-  "license": "MIT",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
