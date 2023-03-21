@@ -11,7 +11,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 app.use(express.urlencoded({ extended: false }))
 
-app.use(expressSession.config)
+app.use(expressSession)
 app.use(flash())
 
 app.use(middleware.requestLogger)
